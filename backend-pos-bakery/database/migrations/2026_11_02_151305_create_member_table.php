@@ -12,7 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('member', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_member');
+            $table->string('kode_member', 20)->unique();
+            $table->string('no_hp', 20)->unique();
+            $table->string('nama_member', 100);
+            $table->date('tanggal_daftar');
+            // Opsional (Rekomendasi Kritik): Tambahkan saldo_poin agar cek poin member instan
+            // $table->integer('saldo_poin')->default(0);
             $table->timestamps();
         });
     }

@@ -12,7 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('riwayat_poin', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_poin');
+            $table->foreignId('id_transaksi')
+                  ->constrained('transaksi_penjualan', 'id_transaksi')
+                  ->cascadeOnUpdate()
+                  ->cascadeOnDelete();
+            $table->enum('jenis_poin', ['tambah', 'tukar']);
+            $table->integer('jumlah_poin');
+            $table->string('keterangan', 100)->nullable();
+            $table->dateTime('waktu');
             $table->timestamps();
         });
     }
