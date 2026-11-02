@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('kode_kasir', 20)->unique();
             $table->string('nama_kasir', 100);
             // Opsional (Rekomendasi Kritik): Tambahkan kolom pin untuk login kasir
-            // $table->string('pin', 255);
+            $table->string('pin', 255);
             $table->timestamps();
         });
 
